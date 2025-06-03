@@ -1,8 +1,23 @@
+import bg from '../assets/bg-home.jpg';
+import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
+
 const HomePage = () => {
   return (
-    <div>
-      Home Page
-    </div>
+    <main
+      className="flex-grow bg-no-repeat bg-cover"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      <div className="flex items-center mx-auto max-w-[1440px] px-16">
+        <div>
+          <h1 className="text-5xl leading-8 font-semibold text-inputs">Campers of your dreams</h1>
+          <p className="mt-4 text-2xl text-inputs">You can find everything you want in our catalog</p>
+          <Button className="inline-block mt-10" as={Link} to="/catalog">
+            View Now
+          </Button>
+        </div>
+      </div>
+    </main>
   );
 };
 

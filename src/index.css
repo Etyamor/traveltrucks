@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
 
 @theme {
   --color-main: #101828;
