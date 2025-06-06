@@ -1,6 +1,7 @@
-import bg from '../assets/bg-home.jpg';
-import Button from '../components/ui/Button';
 import { Link } from 'react-router-dom';
+
+import bg from '@assets/bg-home.jpg';
+import Button from '@components/ui/Button';
 
 const HomePage = () => {
   return (
@@ -11,7 +12,9 @@ const HomePage = () => {
       <div className="mx-auto max-w-[1440px] px-16 w-full flex items-center">
         <div>
           <h1 className="text-5xl leading-8 font-semibold text-inputs">Campers of your dreams</h1>
-          <p className="mt-4 text-2xl text-inputs">You can find everything you want in our catalog</p>
+          <p className="mt-4 text-2xl text-inputs">
+            You can find everything you want in our catalog
+          </p>
           <Button className="inline-block mt-10" as={Link} to="/catalog">
             View Now
           </Button>

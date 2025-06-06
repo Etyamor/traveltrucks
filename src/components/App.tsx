@@ -1,10 +1,11 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const CatalogPage = lazy(() => import('./pages/CatalogPage'));
-const CatalogItemPage = lazy(() => import('./pages/CatalogItemPage'));
+import Header from '@components/Header';
+
+const HomePage = lazy(() => import('@pages/HomePage'));
+const CatalogPage = lazy(() => import('@pages/CatalogPage'));
+const CatalogItemPage = lazy(() => import('@pages/CatalogItemPage'));
 
 function App() {
   return (

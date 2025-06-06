@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 
-import { cn } from '../../lib/utils.ts';
+import { cn } from '@lib/utils.ts';
 
 type ButtonProps<T extends ElementType = 'button'> = {
   as?: T;

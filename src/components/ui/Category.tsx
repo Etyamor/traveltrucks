@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import CategoryIcons from '../../mappings/CategoryIcons.ts';
+import CategoryIcons from '@lib/categoryIcons.ts';
 
 interface CategoryProps {
   name: string;

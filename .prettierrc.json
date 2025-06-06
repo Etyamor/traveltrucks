@@ -12,6 +12,11 @@
   "importOrder": [
     "^react",
     "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^@/redux/(.*)$",
+    "^@/lib/(.*)$",
+    "^@/assets/(.*)$",
+    "^@/pages/(.*)$",
     "^@/components/(.*)$",
     "^[./]"
   ],
