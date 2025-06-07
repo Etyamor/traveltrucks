@@ -37,6 +37,8 @@ const campersSlice = createSlice({
       .addCase(getAll.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+        state.items = [];
+        state.total = 0;
       });
   },
 });

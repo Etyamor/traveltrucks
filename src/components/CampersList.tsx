@@ -11,24 +11,33 @@ import Star from '@components/ui/icons/Star';
 import equipmentList from '@lib/equipmentList';
 import { cn, formatPrice } from '@lib/utils';
 import { getAll } from '@redux/campers/operations';
-import { selectCampers, selectCampersOnPage, selectTotalCampers } from '@redux/campers/selectors';
+import { selectCampers, selectCampersLoading, selectCampersOnPage, selectTotalCampers } from '@redux/campers/selectors';
 import { loadMore } from '@redux/campers/slice';
 import { selectFavorites, toggleFavorite } from '@redux/favorites/slice';
-import type { RootState } from '@redux/store';
 
 import type { AppDispatch, Camper } from '@/types';
+import { selectFilter } from '@redux/filter/selectors';
 
 const CampersList = () => {
   const dispatch: AppDispatch = useDispatch();
   const campers = useSelector(selectCampers);
-  const location = useSelector((state: RootState) => state.filter.location);
+  const filter = useSelector(selectFilter);
   const onPage = useSelector(selectCampersOnPage);
   const total = useSelector(selectTotalCampers);
   const favorites = useSelector(selectFavorites);
+  const loading = useSelector(selectCampersLoading);
 
   useEffect(() => {
     dispatch(getAll());
-  }, [dispatch, location]);
+  }, [dispatch, filter]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-[400px]">
+        <span className="text-text">Loading...</span>
+      </div>
+    );
+  }
 
   return (
     <>

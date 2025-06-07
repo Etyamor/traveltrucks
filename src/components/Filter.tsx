@@ -1,12 +1,39 @@
 import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '@components/Button';
+import Grid1x2 from '@components/ui/icons/Grid1x2';
+import Grid2x2 from '@components/ui/icons/Grid2x2';
+import Grid3x3 from '@components/ui/icons/Grid3x3';
 import Map from '@components/ui/icons/Map';
+import { cn } from '@lib/utils';
 import { selectCampers } from '@redux/campers/selectors';
 import { resetFilter, setFilter } from '@redux/filter/slice';
 
-import type { AppDispatch } from '@/types';
+import type { AppDispatch, IconProps } from '@/types';
+
+const vehicleTypes = [
+  {
+    label: 'Van',
+    value: 'panelTruck',
+    icon: Grid1x2,
+  },
+  {
+    label: 'Fully Integrated',
+    value: 'fullyIntegrated',
+    icon: Grid2x2,
+  },
+  {
+    label: 'Alcove',
+    value: 'alcove',
+    icon: Grid3x3,
+  },
+] as {
+  label: string;
+  value: 'panelTruck' | 'fullyIntegrated' | 'alcove';
+  icon: React.FC<IconProps>;
+}[];
 
 const Filter = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -15,6 +42,9 @@ const Filter = () => {
     .map((c) => c.location)
     .filter((value, index, self) => self.indexOf(value) === index);
   const [location, setLocation] = useState<string>('');
+  const [vehicleType, setVehicleType] = useState<'' | 'panelTruck' | 'fullyIntegrated' | 'alcove'>(
+    '',
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -35,12 +65,14 @@ const Filter = () => {
     dispatch(
       setFilter({
         location,
+        form: vehicleType,
       }),
     );
   };
 
   const handleReset = () => {
     setLocation('');
+    setVehicleType('');
     dispatch(resetFilter());
   };
 
@@ -75,6 +107,30 @@ const Filter = () => {
               </ul>
             </div>
           )}
+        </div>
+      </div>
+      <div className="mt-10">
+        <p className="text-text font-medium">Filters</p>
+        <div className="mt-8">
+          <p className="text-main text-xl font-semibold">Vehicle type</p>
+          <hr className="my-6 text-gray-light" />
+          <div className="flex gap-3">
+            {vehicleTypes.map((type) => (
+              <button
+                onClick={() => setVehicleType(type.value)}
+                className={cn(
+                  'rounded-[10px] w-[112px] h-[112px] flex flex-col justify-center items-center text-center gap-2 border border-gray-light',
+                  {
+                    'border-button': vehicleType === type.value,
+                  },
+                )}
+                key={type.value}
+              >
+                <type.icon className="size-8" />
+                <span className="text-main font-medium">{type.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <div className="mt-10 flex gap-2 items-center">

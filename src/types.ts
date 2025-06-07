@@ -16,8 +16,8 @@ export type Camper = {
   gallery: GalleryItem[];
   reviews: ReviewsItem[];
   transmission: 'manual' | 'automatic';
-  engine: 'petrol' | 'diesel' | 'electric';
-  form: "fullyIntegrated" | "panelTruck" | "alcove";
+  engine: 'petrol' | 'diesel' | 'hybrid';
+  form: 'fullyIntegrated' | 'panelTruck' | 'alcove';
   AC: boolean;
   kitchen: boolean;
   bathroom: boolean;
@@ -61,4 +61,5 @@ export type CamperEquipmentKeys =
 
 export type Filter = {
   location: string;
-}
+  form: '' | 'fullyIntegrated' | 'panelTruck' | 'alcove';
+};

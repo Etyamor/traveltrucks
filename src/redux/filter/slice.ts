@@ -1,8 +1,11 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import type { Filter } from '@/types';
 
 const initialState = {
   location: '',
+  engine: '',
+  form: '',
 } as Filter;
 
 const filterSlice = createSlice({
@@ -10,10 +13,10 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setFilter: (state, action: PayloadAction<Filter>) => {
-      state.location = action.payload.location;
+      Object.assign(state, action.payload);
     },
     resetFilter: (state) => {
-      state.location = '';
+      Object.assign(state, initialState);
     },
   },
 });
