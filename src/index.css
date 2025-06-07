@@ -4,6 +4,7 @@
 @import '@fontsource/inter/latin-600.css';
 
 @theme {
+  --font-inter: "Inter", sans-serif;
   --color-main: #101828;
   --color-text: #475467;
   --color-gray: #6c717b;
@@ -18,4 +19,47 @@
 
 html {
   font-family: 'Inter', sans-serif;
+}
+
+.custom-calendar + .react-datepicker__tab-loop {
+  .react-datepicker {
+    @apply border-text rounded-[12px] overflow-hidden;
+
+    .react-datepicker__header {
+      @apply bg-white border-b-text;
+    }
+  }
+
+  svg.react-datepicker__triangle {
+    @apply stroke-text fill-white text-white;
+  }
+
+  .react-datepicker__navigation-icon--previous::before {
+    @apply size-4 border-none bg-[url(./assets/angle-left.svg)] bg-no-repeat bg-center bg-contain transform-none;
+  }
+
+  .react-datepicker__navigation-icon--next::before {
+    @apply size-4 border-none bg-[url(./assets/angle-right.svg)] bg-no-repeat bg-center bg-contain transform-none;
+  }
+
+  h2.react-datepicker__current-month {
+    @apply text-main font-semibold text-base font-inter;
+  }
+
+  .react-datepicker__day-name {
+    @apply uppercase font-inter text-xs my-2 text-text;
+  }
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day:not([aria-disabled="true"]):hover {
+    @apply bg-text text-inputs rounded-4xl;
+  }
+
+  .react-datepicker__day--keyboard-selected {
+    @apply bg-text text-inputs rounded-4xl opacity-75;
+  }
+
+  .react-datepicker__day {
+    @apply font-inter text-[14px] font-normal;
+  }
 }

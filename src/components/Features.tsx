@@ -15,7 +15,7 @@ const Features = ({ camper }: { camper: Camper }) => {
       </ul>
       <div className="mt-[100px]">
         <p className="text-xl text-main font-semibold">Vehicle details</p>
-        <hr className="my-8 text-gray-light" />
+        <hr className="my-6 text-gray-light" />
         <ul className="flex flex-col gap-4">
           <li className="flex justify-between">
             <span className="text-text">Form</span>

@@ -12,6 +12,7 @@ import { cn, formatPrice } from '@lib/utils';
 import { selectCampers } from '@redux/campers/selectors';
 
 import type { Camper } from '@/types';
+import Form from '@components/BookingForm';
 
 const CatalogItemPage = () => {
   const { id } = useParams();
@@ -81,7 +82,7 @@ const CatalogItemPage = () => {
             </button>
           </div>
         </div>
-        <div className="mt-11 flex justify-between gap-10">
+        <div className="mt-11 flex items-start justify-between gap-10">
           <div className="shrink-0 max-w-[631px]">
             {activeTab === 'features' ? (
               <Features camper={camper} />
@@ -89,6 +90,7 @@ const CatalogItemPage = () => {
               <Reviews reviews={camper.reviews} />
             )}
           </div>
+          <Form />
         </div>
       </div>
     </div>
