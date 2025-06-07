@@ -9,22 +9,26 @@ import Heart from '@components/ui/icons/Heart';
 import Map from '@components/ui/icons/Map';
 import Star from '@components/ui/icons/Star';
 import equipmentList from '@lib/equipmentList';
-import { formatPrice } from '@lib/utils';
+import { cn, formatPrice } from '@lib/utils';
 import { getAll } from '@redux/campers/operations';
 import { selectCampers, selectCampersOnPage, selectTotalCampers } from '@redux/campers/selectors';
 import { loadMore } from '@redux/campers/slice';
+import { selectFavorites, toggleFavorite } from '@redux/favorites/slice';
+import type { RootState } from '@redux/store';
 
 import type { AppDispatch, Camper } from '@/types';
 
 const CampersList = () => {
   const dispatch: AppDispatch = useDispatch();
   const campers = useSelector(selectCampers);
+  const location = useSelector((state: RootState) => state.filter.location);
   const onPage = useSelector(selectCampersOnPage);
   const total = useSelector(selectTotalCampers);
+  const favorites = useSelector(selectFavorites);
 
   useEffect(() => {
     dispatch(getAll());
-  }, [dispatch]);
+  }, [dispatch, location]);
 
   return (
     <>
@@ -40,9 +44,17 @@ const CampersList = () => {
                 <h3>{camper.name}</h3>
                 <div className="flex items-center gap-3">
                   <span>{formatPrice(camper.price)}</span>
-                  <a className="inline-block hover:text-button">
-                    <Heart className="size-6" />
-                  </a>
+                  <button
+                    onClick={() => dispatch(toggleFavorite(camper.id))}
+                    className="inline-block hover:text-button"
+                  >
+                    <Heart
+                      className={cn(
+                        'size-6',
+                        favorites.includes(camper.id) ? 'text-button' : 'text-gray-light',
+                      )}
+                    />
+                  </button>
                 </div>
               </div>
               <div className="flex items-center gap-4 mt-2">

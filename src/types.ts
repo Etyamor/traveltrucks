@@ -58,3 +58,7 @@ export type CamperEquipmentKeys =
   | 'refrigerator'
   | 'microwave'
   | 'form';
+
+export type Filter = {
+  location: string;
+}

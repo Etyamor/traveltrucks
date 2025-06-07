@@ -22,6 +22,7 @@ const campersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAll.pending, (state) => {
+        state.onPage = 4
         state.loading = true;
         state.error = null;
       })
