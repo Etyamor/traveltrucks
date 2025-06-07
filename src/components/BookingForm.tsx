@@ -101,7 +101,7 @@ const BookingForm = () => {
                     className="w-full p-[18px] bg-inputs rounded-[12px] text-gray"
                     as="textarea"
                     name="message"
-                    placeholder="Your comment..."
+                    placeholder="Comment"
                   />
                   <ErrorMessage name="message" component="p" className="text-button" />
                 </label>

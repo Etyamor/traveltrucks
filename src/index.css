@@ -50,6 +50,10 @@ html {
     @apply uppercase font-inter text-xs my-2 text-text;
   }
 
+  .react-datepicker__day {
+    @apply font-inter text-[14px] text-text font-normal;
+  }
+
   .react-datepicker__day--selected,
   .react-datepicker__day:not([aria-disabled="true"]):hover {
     @apply bg-text text-inputs rounded-4xl;
@@ -57,9 +61,5 @@ html {
 
   .react-datepicker__day--keyboard-selected {
     @apply bg-text text-inputs rounded-4xl opacity-75;
-  }
-
-  .react-datepicker__day {
-    @apply font-inter text-[14px] font-normal;
   }
 }
