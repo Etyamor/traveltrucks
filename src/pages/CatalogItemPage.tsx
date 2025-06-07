@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import Features from '@components/ui/Features';
 import Image from '@components/ui/Image';
 import Location from '@components/ui/Location';
 import Rating from '@components/ui/Rating';
+import Reviews from '@components/ui/Reviews';
 import { fetchCamperById } from '@lib/api';
-import { formatPrice } from '@lib/utils';
+import { cn, formatPrice } from '@lib/utils';
 import { selectCampers } from '@redux/campers/selectors';
 
 import type { Camper } from '@/types';
@@ -16,6 +18,10 @@ const CatalogItemPage = () => {
   const campers = useSelector(selectCampers);
   const [camper, setCamper] = useState<Camper>({} as Camper);
   const navigate = useNavigate();
+
+  const [activeTab, setActiveTab] = useState<'features' | 'reviews'>('features');
+  const activeTabClass =
+    'relative before:absolute before:-bottom-[27px] before:left-0 before:w-full before:h-[5px] before:bg-button';
 
   useEffect(() => {
     if (!id) return;
@@ -59,6 +65,31 @@ const CatalogItemPage = () => {
           ))}
         </div>
         <p className="mt-7 text-text">{camper.description}</p>
+        <div className="mt-[60px]">
+          <div className="pb-6 flex w-full gap-10 border-b border-gray-light text-xl text-main font-semibold [&>button]:cursor-pointer">
+            <button
+              className={cn(activeTab === 'features' && activeTabClass)}
+              onClick={() => setActiveTab('features')}
+            >
+              Features
+            </button>
+            <button
+              className={cn(activeTab === 'reviews' && activeTabClass)}
+              onClick={() => setActiveTab('reviews')}
+            >
+              Reviews
+            </button>
+          </div>
+        </div>
+        <div className="mt-11 flex justify-between gap-10">
+          <div className="shrink-0 max-w-[631px]">
+            {activeTab === 'features' ? (
+              <Features camper={camper} />
+            ) : (
+              <Reviews reviews={camper.reviews} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

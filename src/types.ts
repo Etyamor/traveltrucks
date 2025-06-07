@@ -27,6 +27,11 @@ export type Camper = {
   gas: boolean;
   refrigerator: boolean;
   microwave: boolean;
+  length: string;
+  width: string;
+  height: string;
+  tank: string;
+  consumption: string;
 };
 
 type GalleryItem = {
@@ -34,7 +39,7 @@ type GalleryItem = {
   original: string;
 };
 
-type ReviewsItem = {
+export type ReviewsItem = {
   reviewer_name: string;
   reviewer_rating: number;
   comment: string;
