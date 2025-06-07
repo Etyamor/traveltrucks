@@ -1,4 +1,4 @@
-import EquipmentItem from '@components/ui/EquipmentItem';
+import EquipmentItem from '@components/EquipmentItem';
 import equipmentList from '@lib/equipmentList';
 
 import type { Camper } from '@/types';

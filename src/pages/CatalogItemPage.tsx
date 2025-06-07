@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Features from '@components/ui/Features';
-import Image from '@components/ui/Image';
-import Location from '@components/ui/Location';
-import Rating from '@components/ui/Rating';
-import Reviews from '@components/ui/Reviews';
+import Features from '@components/Features';
+import Image from '@components/Image';
+import Location from '@components/Location';
+import Rating from '@components/Rating';
+import Reviews from '@components/Reviews';
 import { fetchCamperById } from '@lib/api';
 import { cn, formatPrice } from '@lib/utils';
 import { selectCampers } from '@redux/campers/selectors';

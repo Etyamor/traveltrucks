@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import bg from '@assets/bg-home.jpg';
-import Button from '@components/ui/Button';
+import Button from '@components/Button';
 
 const HomePage = () => {
   return (

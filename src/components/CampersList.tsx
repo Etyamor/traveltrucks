@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Button from '@components/ui/Button';
-import EquipmentItem from '@components/ui/EquipmentItem';
-import Image from '@components/ui/Image';
+import Button from '@components/Button';
+import EquipmentItem from '@components/EquipmentItem';
+import Image from '@components/Image';
 import Heart from '@components/ui/icons/Heart';
 import Map from '@components/ui/icons/Map';
 import Star from '@components/ui/icons/Star';
