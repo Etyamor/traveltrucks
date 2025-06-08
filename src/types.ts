@@ -59,7 +59,20 @@ export type CamperEquipmentKeys =
   | 'microwave'
   | 'form';
 
+export type formFilter = '' | 'fullyIntegrated' | 'panelTruck' | 'alcove';
+
+export type engineFilter = '' | 'petrol' | 'diesel' | 'hybrid';
+
+export type transmissionFilter = '' | 'manual' | 'automatic';
+
+export type equipmentFilter = {
+  [key: string]: boolean;
+};
+
 export type Filter = {
-  location: string;
-  form: '' | 'fullyIntegrated' | 'panelTruck' | 'alcove';
+  location?: string;
+  form?: formFilter;
+  engine?: engineFilter;
+  transmission?: transmissionFilter;
+  equipment?: equipmentFilter;
 };

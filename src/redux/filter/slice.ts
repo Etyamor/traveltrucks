@@ -4,20 +4,18 @@ import type { Filter } from '@/types';
 
 const initialState = {
   location: '',
-  engine: '',
   form: '',
+  engine: '',
+  transmission: '',
+  equipment: {}
 } as Filter;
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    setFilter: (state, action: PayloadAction<Filter>) => {
-      Object.assign(state, action.payload);
-    },
-    resetFilter: (state) => {
-      Object.assign(state, initialState);
-    },
+    setFilter: (_, action: PayloadAction<Filter>) => action.payload,
+    resetFilter: () => initialState,
   },
 });
 

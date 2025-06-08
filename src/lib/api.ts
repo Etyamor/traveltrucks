@@ -8,8 +8,14 @@ export const fetchCampers = async (filter: Filter = {} as Filter) => {
   try {
     const params = new URLSearchParams();
     Object.entries(filter).forEach(([key, value]) => {
-      if (value !== '' && value !== undefined && value !== null) {
-        params.append(key, value);
+      if (key === 'equipment' && typeof value === 'object' && value !== null) {
+        Object.entries(value).forEach(([eqKey, eqValue]) => {
+          if (eqValue) {
+            params.append(eqKey, 'true');
+          }
+        });
+      } else if (value !== '' && value !== undefined && value !== null) {
+        params.append(key, String(value));
       }
     });
     const response = await axios.get('/', {
